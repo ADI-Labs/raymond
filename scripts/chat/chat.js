@@ -5,7 +5,7 @@ module.exports = {
     chatHandler : function(io) {
         io.on('connection', function(socket){
             socket.on('send:chat_message', function(data){
-                io.to(socket.room).emit('new:chat_message', data);               
+                socket.broadcast.emit('new:chat_message', data);               
             });
 
             socket.on("join:room", function(id) {

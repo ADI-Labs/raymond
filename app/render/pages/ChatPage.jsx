@@ -18,7 +18,7 @@ class Body extends React.Component{
     componentDidMount(){
         //socket.emit('join', this.props.room.id);
         socket.on('load:chat_messages', this.loadMessages);
-    	socket.on('new:chat_message', this.receiveMessage);
+    	socket.on('new:chat_message', this.receiveMessage.bind(this));
     }
     loadMessages(data){
         this.setState({
@@ -28,11 +28,9 @@ class Body extends React.Component{
             messages : data.messages
         })
     }
- 	receiveMessage(message){        
-        var newMessageArray = this.state.messages.slice();    
-        newMessageArray.push(message);   
+ 	receiveMessage(message){    
         this.setState({
-        	messages: newMessageArray
+        	messages: this.state.messages.concat(message)
         });     
     }
 	postMessage(message){        
