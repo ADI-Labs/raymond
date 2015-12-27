@@ -4,9 +4,9 @@ class ThreadMenu extends React.Component {
   render(){
     return (
       <div id = "thread-menu">
-        <i id = "show-google-docs" className="fa fa-files-o fa-lg"
+        <img src = "/images/google-drive-icon.png" id = "show-google-docs"
           onClick = { this.props.toggleDriveArea.bind(this) } >
-        </i>
+        </img>
         <input type="text" placeholder="Search for thread"
           id = "search-thread">
         </input>
@@ -18,14 +18,32 @@ class ThreadMenu extends React.Component {
   }
 };
 
-class Thread extends React.Component {    
-  render(){    
+class ThreadModal extends React.Component {
+  render(){
+    let displayStatus = {
+        display : this.props.displayModal ? "block" : "none"
+    };
+    return  (
+      <div id="openModal" className="modalDialog" style = { displayStatus }  >
+        <div>
+          { this.props.currentThreadModal.content }
+          <div className = 'thread-post-postedBy'>
+            Posted by : { this.props.currentThreadModal.postedBy }
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+class Thread extends React.Component {
+  render(){
     return (
         <li className = 'thread-post'>
           <div>
             { this.props.thread.content }
             <div className = 'thread-post-postedBy'>
-              Posted by : { this.props.thread.postedBy } 
+              Posted by : { this.props.thread.postedBy }
             </div>
           </div>
        </li>
@@ -36,10 +54,10 @@ class Thread extends React.Component {
 class ThreadList extends React.Component {
   render(){
     var renderThread = function(thread, i){
-      return ( 
-          <div onClick = { this.props.toggleModal.bind(undefined, thread) }> 
-            <Thread key = { i } thread = { thread }/>
-          </div>
+      return (
+        <div onClick = { this.props.toggleModal.bind(undefined, thread) }>
+          <Thread key = { i } thread = { thread }/>
+        </div>
       )
     }
     return (
@@ -116,14 +134,14 @@ class ThreadArea extends React.Component {
       showPostInput : this.state.showPostInput ? false : true
     })
   }
-render() {
+  render() {
     return (
-        <div id="thread-area">
-          <ThreadMenu toggleDisplayStatus = { this.toggleDisplayStatus.bind(this) }
-            toggleDriveArea = { this.props.toggleDriveArea.bind(this) } />
-          <ThreadList threads = { this.props.threads } toggleModal = { this.props.toggleModal } />
-          <ThreadInputForm showPostInput = { this.state.showPostInput } postThread = { this.props.postThread } toggleDisplayStatus = { this.toggleDisplayStatus.bind(this) } />      
-        </div>
+      <div id="thread-area">
+        <ThreadMenu toggleDisplayStatus = { this.toggleDisplayStatus.bind(this) }
+          toggleDriveArea = { this.props.toggleDriveArea.bind(this) } />
+        <ThreadList threads = { this.props.threads } toggleModal = { this.props.toggleModal } />
+        <ThreadInputForm showPostInput = { this.state.showPostInput } postThread = { this.props.postThread } toggleDisplayStatus = { this.toggleDisplayStatus.bind(this) } />
+      </div>
     )
   }
 };
