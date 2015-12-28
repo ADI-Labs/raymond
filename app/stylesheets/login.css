@@ -22,7 +22,6 @@ a:hover {
   border: 0;
 }
 
-
 /*
  * Base structure
  */
@@ -30,7 +29,7 @@ a:hover {
 html,
 body {
   height: 100%;
-  background-color: #455C6E;
+  background-color: #3498DB;
   font-family: 'Lato', sans-serif;
 }
 body {
@@ -124,6 +123,62 @@ body {
 .mastfoot {
   color: #999; /* IE8 proofing */
   color: rgba(255,255,255,.5);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+#bottom-footer{
+  font-size: 17px;
+  margin-bottom: 50px;
+}
+
+.rayos-info-pannel{
+  width: 80%;
+  margin-left: 10%;
+  display: none;
+}
+
+.rayos-info-pannel.active{
+  display:block;
+}
+
+.navigation-area {
+  position: relative;
+  margin: auto;
+  height: 100px;
+}
+
+.navigate-item{
+  font-size: 50px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.navigate-item:hover{
+  opacity: 1;
+}
+
+.navigate-item.fa-angle-double-right{
+  position: absolute;
+  float: right;
+  right: 0;
+  top: 0;
+}
+
+.navigate-item.fa-angle-double-left{
+  position: absolute;
+  float: left;
+  left: 0;
+  top: 0;
+}
+
+.get-started{
+  position: fixed;
+  left: 0;
+  right: 0;
+  float: bottom;
+  margin: auto;
 }
 
 /*
@@ -136,22 +191,17 @@ body {
     position: fixed;
     top: 0;
   }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
   /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;
   }
   /* Handle the widths */
   .masthead,
-  .mastfoot,
   .cover-container {
     width: 100%; /* Must be percentage or pixels for horizontal alignment */
   }
 
-  #college-image{
+  #rayos-image{
     position: absolute;
     top: 12%;
     left: 0;
@@ -159,53 +209,40 @@ body {
     margin: auto;
     width: 500px;
   }
+
+  .inner.cover{
+    padding: 0;
+    margin-top: 250px;
+  }
+
+  .navigation-area {
+    top: -270px;
+    width: 80%;
+  }
 }
 
 @media (min-width: 992px) {
   .masthead,
-  .mastfoot,
   .cover-container {
     width: 1000px;
   }
 
-  #college-image{
+  #rayos-image{
     position: absolute;
     top: 10%;
     left: 0;
     right: 0;
     margin: auto;
-    width: 700px;
+    width: 600px;
   }
-}
 
-#bottom-footer{
-  font-size: 17px;
-  margin-bottom: 50px;
-}
+  .inner.cover {
+    padding: 0;
+    margin-top: 250px;
+  }
 
-.slick-list.draggable {
-  height: 500px;
-}
-
-#inner-cover {
-  padding: 0;
-}
-.container {
-  width: 100%;
-  padding: 0;
-}
-
-.slick-prev.slick-arrow{
-  position: absolute;
-  float: right;
-  top: 50%;
-  right: 0;
-  z-index: 5;
-}
-
-.slick-next.slick-arrow{
-  position: absolute;
-  left: 0;
-  top: 50%;
-  z-index: 5
+  .navigation-area {
+    top: -230px;
+    width: 90%;
+  }
 }
